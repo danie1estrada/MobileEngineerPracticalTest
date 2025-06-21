@@ -1,25 +1,28 @@
 package daniel.estrada.dogswelove.presentation
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import coil3.compose.AsyncImage
-import daniel.estrada.dogswelove.domain.model.Dog
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
+import daniel.estrada.dogswelove.presentation.components.DogItem
 
 @Composable
 fun DogsScreen(
+    modifier: Modifier = Modifier,
     state: UiState
 ) {
-    Box {
+    Box (
+        modifier = modifier.padding(horizontal = 16.dp)
+    ) {
         if (state.isLoading) {
             CircularProgressIndicator()
         } else {
-            LazyColumn {
+            LazyColumn(verticalArrangement = Arrangement.spacedBy(16.dp)) {
                 items(state.dogs, key = { it.name }) { dog ->
                     DogItem(dog)
                 }
@@ -28,20 +31,5 @@ fun DogsScreen(
     }
 }
 
-@Composable
-fun DogItem(
-    dog: Dog
-) {
-    Row {
-        AsyncImage(
-            model = dog.image,
-            contentDescription = null
-        )
 
-        Column {
-            Text(text = dog.name)
-            Text(text = dog.description)
-            Text(text = "${dog.age}")
-        }
-    }
-}
+
