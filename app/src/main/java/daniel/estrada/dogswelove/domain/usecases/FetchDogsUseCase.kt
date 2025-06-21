@@ -2,11 +2,12 @@ package daniel.estrada.dogswelove.domain.usecases
 
 import daniel.estrada.dogswelove.domain.model.Dog
 import daniel.estrada.dogswelove.domain.repository.DogsRepository
+import javax.inject.Inject
 
-class FetchDogsUseCase(
+class FetchDogsUseCase @Inject constructor(
     private val repository: DogsRepository
 ) {
-    operator fun invoke(): List<Dog> {
+    suspend operator fun invoke(): List<Dog> {
         val localDogs = repository.fetchDogsFromDatabase()
         if (localDogs.isNotEmpty()) {
             return localDogs
