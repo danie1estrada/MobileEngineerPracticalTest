@@ -1,4 +1,4 @@
-package daniel.estrada.dogswelove.presentation
+package daniel.estrada.dogswelove.presentation.home
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box

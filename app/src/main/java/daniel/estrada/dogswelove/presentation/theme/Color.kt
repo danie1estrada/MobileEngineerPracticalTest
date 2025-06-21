@@ -1,4 +1,4 @@
-package daniel.estrada.dogswelove.ui.theme
+package daniel.estrada.dogswelove.presentation.theme
 
 import androidx.compose.ui.graphics.Color
 

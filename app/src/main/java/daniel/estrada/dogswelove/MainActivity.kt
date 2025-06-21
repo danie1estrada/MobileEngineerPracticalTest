@@ -14,10 +14,10 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import dagger.hilt.android.AndroidEntryPoint
-import daniel.estrada.dogswelove.presentation.DogsScreen
-import daniel.estrada.dogswelove.presentation.DogsViewModel
+import daniel.estrada.dogswelove.presentation.home.DogsScreen
+import daniel.estrada.dogswelove.presentation.home.DogsViewModel
 import daniel.estrada.dogswelove.presentation.components.TopAppBar
-import daniel.estrada.dogswelove.ui.theme.DogsWeLoveTheme
+import daniel.estrada.dogswelove.presentation.theme.DogsWeLoveTheme
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {

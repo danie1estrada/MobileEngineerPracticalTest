@@ -1,4 +1,4 @@
-package daniel.estrada.dogswelove.presentation
+package daniel.estrada.dogswelove.presentation.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
