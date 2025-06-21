@@ -8,6 +8,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import daniel.estrada.dogswelove.BuildConfig
 import daniel.estrada.dogswelove.data.database.DogDao
 import daniel.estrada.dogswelove.data.database.DogDatabase
 import daniel.estrada.dogswelove.data.network.DogService
@@ -23,11 +24,11 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-abstract class DataModule {
+object DataModule {
     @Provides
     @Singleton
     fun provideRetrofitClient(): Retrofit = Retrofit.Builder()
-        .baseUrl("") // TODO: Add base url
+        .baseUrl(BuildConfig.BASE_URL)
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
@@ -52,20 +53,18 @@ abstract class DataModule {
     fun provideDogDao(dogDatabase: DogDatabase): DogDao = dogDatabase.dogDao()
 
     @Provides
-    @Binds
-    abstract fun bindRemoteDataSource(
-        retrofitDataSource: RetrofitDataSource
-    ): RemoteDataSource
+    fun bindRemoteDataSource(
+        dogService: DogService
+    ): RemoteDataSource = RetrofitDataSource(dogService)
 
     @Provides
-    @Binds
-    abstract fun bindLocalDataSource(
-        roomDataSource: RoomDataSource
-    ): LocalDataSource
+    fun provideLocalDataSource(
+        dogDao: DogDao
+    ): LocalDataSource = RoomDataSource(dogDao)
 
     @Provides
-    @Binds
-    abstract fun bindDogsRepository(
-        repository: Repository
-    ): DogsRepository
+    fun provideDogsRepository(
+        remoteDataSource: RemoteDataSource,
+        localDataSource: LocalDataSource
+    ): DogsRepository = Repository(remoteDataSource, localDataSource)
 }

@@ -1,3 +1,5 @@
+import com.android.build.gradle.internal.cxx.configure.gradleLocalProperties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -21,6 +23,10 @@ android {
     }
 
     buildTypes {
+        val baseUrl = gradleLocalProperties(rootDir, providers).getProperty("BASE_URL")
+        defaultConfig {
+            buildConfigField("String", "BASE_URL", "\"$baseUrl\"")
+        }
         release {
             isMinifyEnabled = false
             proguardFiles(
@@ -38,13 +44,15 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
 }
 
 dependencies {
     implementation(libs.bundles.core)
     implementation(libs.bundles.ui)
-    implementation(libs.dagger.hilt)
+    implementation(libs.bundles.coil)
+    implementation(libs.bundles.hilt)
     implementation(libs.bundles.room)
     implementation(libs.bundles.retrofit)
     ksp(libs.dagger.hilt.compiler)

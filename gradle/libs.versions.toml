@@ -12,6 +12,8 @@ hilt = "2.56.2"
 room = "2.7.2"
 ksp = "2.0.21-1.0.27"
 retrofit = "3.0.0"
+coil = "3.2.0"
+hiltNavigationCompose = "1.2.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -28,6 +30,9 @@ androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-toolin
 androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
+# Coil
+coil-kt-compose = { group = "io.coil-kt.coil3", name = "coil-compose", version.ref = "coil" }
+coil-kt-network = { group = "io.coil-kt.coil3", name = "coil-network-okhttp", version.ref = "coil" }
 
 # Room
 androidx-room = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
@@ -41,7 +46,7 @@ squareup-converter-gson = { group = "com.squareup.retrofit2", name = "converter-
 # Hilt
 dagger-hilt = { group = "com.google.dagger", name="hilt-android", version.ref="hilt" }
 dagger-hilt-compiler = { group = "com.google.dagger", name="hilt-android-compiler", version.ref="hilt" }
-#androidx-hilt-navigation-compose = { group = "androidx.hilt", name="hilt-navigation-compose", version.ref="hiltNavigationCompose" }
+androidx-hilt-navigation-compose = { group = "androidx.hilt", name="hilt-navigation-compose", version.ref="hiltNavigationCompose" }
 
 [bundles]
 core = ["androidx-core-ktx", "androidx-lifecycle-runtime-ktx"]
@@ -55,7 +60,9 @@ ui = [
     "androidx-material3"
 ]
 
+coil = ["coil-kt-compose", "coil-kt-network"]
 room = ["androidx-room", "androidx-room-ktx"]
+hilt = ["dagger-hilt", "androidx-hilt-navigation-compose"]
 retrofit = ["squareup-retrofit2", "squareup-converter-gson"]
 
 [plugins]
