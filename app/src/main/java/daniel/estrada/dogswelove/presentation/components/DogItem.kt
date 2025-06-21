@@ -15,10 +15,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
+import daniel.estrada.dogswelove.R
 import daniel.estrada.dogswelove.domain.model.Dog
 
 @Composable
@@ -32,7 +34,7 @@ fun DogItem(
             model = dog.image,
             contentDescription = null,
             modifier = Modifier.clip(RoundedCornerShape(16.dp))
-                .width(125.dp)
+                .width(150.dp)
         )
 
         Card(
@@ -60,7 +62,7 @@ fun DogItem(
                     color = Color(0xFF666666)
                 )
                 Text(
-                    text = "Almost ${dog.age} years",
+                    text = stringResource(R.string.dog_age, dog.age),
                     style = MaterialTheme.typography.labelMedium,
                     color = Color(0xFF333333),
                     fontWeight = FontWeight.Bold

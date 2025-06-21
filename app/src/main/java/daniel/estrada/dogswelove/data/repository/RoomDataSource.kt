@@ -1,8 +1,8 @@
 package daniel.estrada.dogswelove.data.repository
 
 import daniel.estrada.dogswelove.data.database.DogDao
-import daniel.estrada.dogswelove.data.database.DogEntity
-import daniel.estrada.dogswelove.data.database.toDomain
+import daniel.estrada.dogswelove.data.mappers.toDomain
+import daniel.estrada.dogswelove.data.mappers.toEntity
 import daniel.estrada.dogswelove.domain.model.Dog
 import daniel.estrada.dogswelove.domain.repository.LocalDataSource
 import javax.inject.Inject
@@ -15,6 +15,6 @@ class RoomDataSource @Inject constructor(
     }
 
     override suspend fun saveDogs(dogs: List<Dog>) {
-        dogDao.insertAll(dogs.map { DogEntity.fromDomain(it) })
+        dogDao.insertAll(dogs.map { it.toEntity() })
     }
 }
