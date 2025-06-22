@@ -14,6 +14,7 @@ ksp = "2.0.21-1.0.27"
 retrofit = "3.0.0"
 coil = "3.2.0"
 hiltNavigationCompose = "1.2.0"
+mockito = "5.17.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -48,6 +49,14 @@ dagger-hilt = { group = "com.google.dagger", name="hilt-android", version.ref="h
 dagger-hilt-compiler = { group = "com.google.dagger", name="hilt-android-compiler", version.ref="hilt" }
 androidx-hilt-navigation-compose = { group = "androidx.hilt", name="hilt-navigation-compose", version.ref="hiltNavigationCompose" }
 
+# Mockito
+mockito-core = { group = "org.mockito", name = "mockito-core", version.ref = "mockito" }
+mockito-kotlin = { group = "org.mockito.kotlin", name = "mockito-kotlin", version = "5.4.0" }
+
+# Coroutine test
+kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version = "1.10.2" }
+turbine = { group = "app.cash.turbine", name = "turbine", version = "1.0.0" }
+
 [bundles]
 core = ["androidx-core-ktx", "androidx-lifecycle-runtime-ktx"]
 
@@ -64,6 +73,7 @@ coil = ["coil-kt-compose", "coil-kt-network"]
 room = ["androidx-room", "androidx-room-ktx"]
 hilt = ["dagger-hilt", "androidx-hilt-navigation-compose"]
 retrofit = ["squareup-retrofit2", "squareup-converter-gson"]
+mockito = ["mockito-core", "mockito-kotlin"]
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
