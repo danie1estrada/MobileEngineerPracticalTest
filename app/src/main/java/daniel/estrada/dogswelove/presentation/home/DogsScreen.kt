@@ -14,16 +14,18 @@ import daniel.estrada.dogswelove.presentation.components.DogItem
 @Composable
 fun DogsScreen(
     modifier: Modifier = Modifier,
-    state: UiState
+    state: UiState,
+    showSnackBar: (String) -> Unit
 ) {
     Box (
         modifier = modifier.padding(horizontal = 16.dp)
     ) {
+        state.error?.let { showSnackBar(state.error) }
         if (state.isLoading) {
             CircularProgressIndicator()
         } else {
             LazyColumn(verticalArrangement = Arrangement.spacedBy(16.dp)) {
-                items(state.dogs, key = { it.name }) { dog ->
+                items(state.dogs, key = { it.age }) { dog ->
                     DogItem(dog)
                 }
             }

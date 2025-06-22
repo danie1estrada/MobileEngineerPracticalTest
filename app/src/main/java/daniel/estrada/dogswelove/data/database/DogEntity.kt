@@ -5,8 +5,8 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "dogs")
 data class DogEntity(
-    @PrimaryKey val name: String,
+    val name: String,
     val description: String,
-    val age: Int,
+    @PrimaryKey val age: Int,
     val image: String
 )
