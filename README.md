@@ -8,6 +8,14 @@
 
 This solution is intended to represent a real-world example of software development in an enterprise-like environment implementing a feature by using a layered architecture, dependency injection and a test strategy.
 
+## Prerequisites
+
+In order to compile the project, add the following line to the *local.properties* file:
+
+```
+BASE_URL=https://jsonblob.com/api/
+```
+
 ## Requirements
 
 The present solution meets the following criteria:
