@@ -92,3 +92,10 @@ While Jetpack Compose is a powerful tool to build UIs, it can easily become a la
 ### Dependencies
 
 By including a relatively small set of dependencies and Gradle plugins in a small project, it considerably increases compilation times and App bundle size.
+
+## Considerations
+
+- For this solution, the architecture layers where placed on the root of the project but, in a more complex application, each feature would have its own layered architecture and can potentially be a Gradle module.
+- Endpoint returns a list with redundant data except for the ***age*** field. In order to display it correctly, this field is used as unique identifier in both UI and database.
+-  Use Case Test class depends on Room implementation. To improve testability it should not rely on concrete implementations and this can be achieved by implementing dependency injection on the test classes.
+- Overall, the difficulty level of this challenge was easy, however, the real challenge was taking a step back and thinking of an optimal solution for the given requirements.
